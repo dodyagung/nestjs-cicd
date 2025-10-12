@@ -19,7 +19,6 @@ RUN pnpm i --frozen-lockfile
 FROM base AS builder
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN ./node_modules/.bin/prisma generate
 RUN pnpm build && \
     pnpm prune --prod
 
